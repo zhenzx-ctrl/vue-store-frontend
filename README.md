@@ -1,5 +1,71 @@
-# Vue 3 + Vite
+# 🛒 优选商城 - 用户端前台
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+基于 Vue 3 + Vite + Pinia 开发的电商购物平台，配套优选商城后台管理系统，形成完整电商业务闭环。
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## 🚀 在线演示
+
+https://frolicking-phoenix-6eca03.netlify.app
+
+## 🛠️ 技术栈
+
+| 技术 | 说明 |
+|------|------|
+| Vue 3 | 组合式 API + `<script setup>` |
+| Vite | 极速开发构建工具 |
+| Pinia | 状态管理（购物车 + 用户状态） |
+| Vue Router | 路由管理 |
+| Element Plus | UI 组件库 |
+| localStorage | 数据持久化 |
+
+## 📦 功能模块
+
+### 首页
+- 轮播图展示
+- 商品分类导航
+- 推荐商品列表
+
+### 商品中心
+- 商品列表展示
+- 分类筛选
+- 分页加载
+- 防抖搜索
+
+### 商品详情
+- 商品信息展示
+- SKU 规格选择（颜色、尺寸等）
+- 收藏 / 取消收藏
+- 加入购物车
+
+### 购物车
+- 商品增删改
+- 全选 / 取消全选
+- 数量调整
+- 价格实时计算
+
+### 订单管理
+- 订单列表
+- 订单状态
+- 下单流程
+
+### 个人中心
+- 个人资料
+- 我的订单
+- 我的收藏
+- 浏览足迹
+- 地址管理
+- 优惠券
+
+### 用户认证
+- 登录 / 注册
+- Token 模拟认证
+
+## 📁 项目结构
+src/
+├── api/ # 接口请求
+├── assets/ # 静态资源
+├── components/ # 公共组件
+├── stores/ # Pinia 状态管理
+├── utils/ # 工具函数
+├── views/ # 页面组件
+├── App.vue
+└── main.js
