@@ -32,21 +32,21 @@ const products = getProducts()
 .section-title {
   font-size: 22px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0;
-  padding-left: 12px;
-  border-left: 4px solid #e4393c;
+  padding-left: 14px;
+  border-left: 4px solid var(--color-primary, #FF6B35);
 }
 
 .view-more {
   font-size: 14px;
-  color: #999;
+  color: var(--gray-500, #8B909A);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--transition-fast, 0.15s);
 }
 
 .view-more:hover {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
 }
 
 .product-grid {

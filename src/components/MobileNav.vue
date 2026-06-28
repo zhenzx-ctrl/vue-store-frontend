@@ -40,7 +40,7 @@ const cartCount = computed(() => cartStore.totalCount)
   left: 0;
   right: 0;
   height: 56px;
-  background: #fff;
+  background: var(--color-white, #fff);
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
   z-index: 200;
   padding-bottom: env(safe-area-inset-bottom);
@@ -53,7 +53,7 @@ const cartCount = computed(() => cartStore.totalCount)
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   font-size: 11px;
   gap: 2px;
   position: relative;
@@ -61,7 +61,7 @@ const cartCount = computed(() => cartStore.totalCount)
 }
 
 .nav-item.active {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
 }
 
 .nav-icon {
@@ -78,8 +78,8 @@ const cartCount = computed(() => cartStore.totalCount)
   top: 2px;
   right: 50%;
   margin-right: -22px;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 10px;
   min-width: 16px;
   height: 16px;

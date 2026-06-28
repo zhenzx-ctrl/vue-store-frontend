@@ -105,23 +105,23 @@ watch(() => props.modelValue, (val) => {
 .picker-row input {
   flex: 1;
   height: 40px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 8px;
   padding: 0 12px;
   font-size: 14px;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   outline: none;
   transition: border-color 0.2s;
-  background: #fff;
+  background: var(--color-white, #fff);
 }
 
 .picker-row select:focus,
 .picker-row input:focus {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .picker-row select:disabled {
-  background: #f5f5f5;
+  background: var(--gray-100, #f7f8fa);
   color: #ccc;
 }
 

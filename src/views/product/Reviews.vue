@@ -83,15 +83,20 @@ function submitReview() {
 <style scoped>
 .reviews-section {
   margin-top: 32px;
+  background: var(--color-white, #fff);
+  border-radius: var(--radius-md, 10px);
+  padding: 24px;
+  box-shadow: var(--shadow-card, 0 2px 12px rgba(0,0,0,0.04));
+  border: 1px solid var(--color-border-light, #f3f4f6);
 }
 
 .reviews-title {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0 0 20px;
-  padding-left: 12px;
-  border-left: 4px solid #e4393c;
+  padding-left: 14px;
+  border-left: 4px solid var(--color-primary, #FF6B35);
 }
 
 .review-list {
@@ -101,8 +106,8 @@ function submitReview() {
 }
 
 .review-item {
-  background: #fafafa;
-  border-radius: 8px;
+  background: var(--gray-100, #f7f8fa);
+  border-radius: var(--radius-sm, 6px);
   padding: 16px;
 }
 
@@ -117,8 +122,8 @@ function submitReview() {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -129,11 +134,11 @@ function submitReview() {
 .review-username {
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: var(--gray-800, #374151);
 }
 
 .review-rating .star {
-  color: #ddd;
+  color: var(--gray-300, #d0d5dd);
   font-size: 14px;
 }
 
@@ -143,13 +148,13 @@ function submitReview() {
 
 .review-time {
   font-size: 12px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   margin-left: auto;
 }
 
 .review-content {
   font-size: 14px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
   line-height: 1.6;
   margin: 0;
 }
@@ -165,29 +170,29 @@ function submitReview() {
   height: 80px;
   border-radius: 6px;
   object-fit: cover;
-  background: #f5f5f5;
+  background: var(--gray-100, #f7f8fa);
 }
 
 .reviews-empty {
   text-align: center;
   padding: 40px 20px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   font-size: 14px;
 }
 
 /* 评价表单 */
 .review-form {
   margin-top: 24px;
-  background: #fff;
-  border-radius: 8px;
+  background: var(--color-white, #fff);
+  border-radius: var(--radius-sm, 6px);
   padding: 20px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--color-border, #edeef2);
 }
 
 .review-form h4 {
   font-size: 15px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-800, #374151);
   margin: 0 0 12px;
 }
 
@@ -197,12 +202,12 @@ function submitReview() {
   gap: 4px;
   margin-bottom: 12px;
   font-size: 14px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
 }
 
 .star-btn {
   font-size: 20px;
-  color: #ddd;
+  color: var(--gray-300, #d0d5dd);
   cursor: pointer;
   transition: color 0.2s;
 }
@@ -217,20 +222,20 @@ function submitReview() {
 
 .review-form textarea {
   width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1.5px solid var(--gray-200, #edeef2);
+  border-radius: var(--radius-sm, 6px);
   padding: 12px;
   font-size: 14px;
-  color: #333;
+  color: var(--gray-800, #374151);
   resize: vertical;
   outline: none;
   box-sizing: border-box;
   font-family: inherit;
-  transition: border-color 0.2s;
+  transition: border-color var(--transition-fast, 0.15s);
 }
 
 .review-form textarea:focus {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .btn-submit {
@@ -238,16 +243,17 @@ function submitReview() {
   padding: 8px 24px;
   border: none;
   border-radius: 20px;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all var(--transition-fast, 0.15s);
+  font-family: inherit;
 }
 
 .btn-submit:hover:not(:disabled) {
-  background: #c1272d;
+  background: var(--color-primary-dark, #E55A2B);
 }
 
 .btn-submit:disabled {
@@ -259,11 +265,11 @@ function submitReview() {
   margin-top: 16px;
   text-align: center;
   font-size: 14px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
 }
 
 .review-login-tip a {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
   text-decoration: none;
 }
 

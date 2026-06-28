@@ -29,9 +29,15 @@
         <img v-if="currentImage" :src="currentImage" :alt="fallbackText" />
         <div v-else class="full-preview-empty">{{ fallbackText }}</div>
         <div v-if="images.length > 1" class="full-preview-nav">
-          <button @click="currentIdx = (currentIdx - 1 + images.length) % images.length">‹ 上一张</button>
-          <span>{{ currentIdx + 1 }} / {{ images.length }}</span>
-          <button @click="currentIdx = (currentIdx + 1) % images.length">下一张 ›</button>
+          <button class="nav-btn" @click="currentIdx = (currentIdx - 1 + images.length) % images.length">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            上一张
+          </button>
+          <span class="nav-counter">{{ currentIdx + 1 }} / {{ images.length }}</span>
+          <button class="nav-btn" @click="currentIdx = (currentIdx + 1) % images.length">
+            下一张
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
       </div>
     </Modal>
@@ -59,18 +65,15 @@ const currentImage = computed(() => {
   return props.images[currentIdx.value] || ''
 })
 
-// 放大镜位置
 const lensStyle = computed(() => ({
   left: `${lensX.value - 75}px`,
   top: `${lensY.value - 75}px`,
 }))
 
-// 放大结果容器位置（右侧）
 const resultStyle = computed(() => ({
   backgroundImage: currentImage.value ? `url(${currentImage.value})` : 'none',
 }))
 
-// 放大结果图片样式
 const resultImgStyle = computed(() => ({
   backgroundImage: currentImage.value ? `url(${currentImage.value})` : 'none',
   backgroundPosition: `${-lensX.value * 2}px ${-lensY.value * 2}px`,
@@ -92,37 +95,44 @@ function onMouseMove(e) {
 
 .main-image {
   width: 100%;
-  height: 420px;
-  border-radius: 12px;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md, 10px);
   overflow: hidden;
-  background: #f5f5f5;
+  background: var(--gray-100, #f7f8fa);
   position: relative;
   cursor: zoom-in;
+  border: 1px solid var(--color-border-light, #f3f4f6);
+}
+
+.main-image :deep(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .zoom-lens {
   position: absolute;
   width: 150px;
   height: 150px;
-  border: 2px solid #e4393c;
+  border: 2px solid var(--color-primary, #FF6B35);
   border-radius: 4px;
   pointer-events: none;
-  background: rgba(228, 57, 60, 0.1);
+  background: rgba(255, 107, 53, 0.08);
   z-index: 10;
 }
 
 .zoom-result {
   position: absolute;
-  left: 100%;
+  left: calc(100% + 16px);
   top: 0;
-  width: 300px;
-  height: 300px;
-  border: 1px solid #eee;
-  border-radius: 8px;
+  width: 340px;
+  height: 340px;
+  border: 1px solid var(--gray-200, #edeef2);
+  border-radius: var(--radius-sm, 6px);
   overflow: hidden;
   z-index: 20;
-  background: #f5f5f5;
-  margin-left: 12px;
+  background: var(--color-white, #fff);
+  box-shadow: var(--shadow-lg, 0 10px 40px rgba(0,0,0,0.08));
 }
 
 .zoom-result-img {
@@ -136,26 +146,33 @@ function onMouseMove(e) {
   display: flex;
   gap: 8px;
   overflow-x: auto;
+  padding: 4px 0;
 }
 
 .thumb-item {
   width: 64px;
   height: 64px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm, 6px);
   overflow: hidden;
   border: 2px solid transparent;
   cursor: pointer;
   flex-shrink: 0;
-  transition: border-color 0.2s;
-  background: #f5f5f5;
+  transition: border-color var(--transition-fast, 0.15s);
+  background: var(--gray-100, #f7f8fa);
 }
 
 .thumb-item.active {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .thumb-item:hover {
-  border-color: #e4393c;
+  border-color: var(--color-primary-light, #FF8A5C);
+}
+
+.thumb-item :deep(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* 全屏预览 */
@@ -166,7 +183,7 @@ function onMouseMove(e) {
 .full-preview img {
   max-width: 100%;
   max-height: 500px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 6px);
 }
 
 .full-preview-empty {
@@ -174,38 +191,49 @@ function onMouseMove(e) {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   font-size: 16px;
-  background: #f5f5f5;
-  border-radius: 8px;
+  background: var(--gray-100, #f7f8fa);
+  border-radius: var(--radius-sm, 6px);
 }
 
 .full-preview-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 20px;
   margin-top: 16px;
 }
 
-.full-preview-nav button {
-  padding: 6px 16px;
-  border: 1px solid #ddd;
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border: 1.5px solid var(--gray-200, #edeef2);
   border-radius: 20px;
-  background: #fff;
-  color: #666;
+  background: var(--color-white, #fff);
+  color: var(--gray-600, #6B7280);
   font-size: 13px;
   cursor: pointer;
+  transition: all var(--transition-fast, 0.15s);
+  font-family: inherit;
 }
 
-.full-preview-nav button:hover {
-  border-color: #e4393c;
-  color: #e4393c;
+.nav-btn:hover {
+  border-color: var(--color-primary, #FF6B35);
+  color: var(--color-primary, #FF6B35);
 }
 
-.full-preview-nav span {
+.nav-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.nav-counter {
   font-size: 14px;
-  color: #999;
+  color: var(--gray-500, #8B909A);
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {

@@ -94,25 +94,48 @@ const routes = [
   },
 ]
 
+/**
+ * 滚动位置缓存 —— 返回上一页时恢复滚动位置
+ * 通过 key（路由名称 + 查询参数）保存每个页面的 scrolY
+ */
+const scrollCache = new Map()
+
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to, from, savedPosition) {
+    // 1) 浏览器原生返回/前进 → 使用原生保存的位置
+    if (savedPosition) {
+      return savedPosition
+    }
+    // 2) 手动导航返回（如从详情页点回首页）→ 从缓存恢复
+    const cacheKey = to.name
+    if (cacheKey && scrollCache.has(cacheKey)) {
+      const pos = scrollCache.get(cacheKey)
+      scrollCache.delete(cacheKey)
+      return pos
+    }
+    // 3) 新页面 → 滚动到顶部
     return { top: 0 }
   },
 })
 
-// 路由守卫（新写法，无 next() 警告）
+// 路由守卫：保存滚动位置 + 标题 + 鉴权
 router.beforeEach((to, from) => {
+  // 离开前保存滚动位置
+  if (from.name) {
+    scrollCache.set(from.name, { top: window.scrollY })
+  }
+  // 设置页面标题
   document.title = `${to.meta.title || '优选商城'} - 优选商城`
-
+  // 需要登录的页面跳转到登录页
   if (to.meta.requiresAuth) {
     const token = localStorage.getItem('token')
     if (!token) {
       return { path: '/login', query: { redirect: to.fullPath } }
     }
   }
-
+  // 已登录用户访问登录/注册页 → 跳首页
   if ((to.path === '/login' || to.path === '/register') && localStorage.getItem('token')) {
     return '/'
   }

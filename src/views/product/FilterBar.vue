@@ -79,7 +79,7 @@ watch(() => props.priceMax, (v) => { maxPrice.value = v || '' })
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background: #fff;
+  background: var(--color-white, #fff);
   border-radius: 8px;
   padding: 12px 16px;
   margin-bottom: 16px;
@@ -95,9 +95,9 @@ watch(() => props.priceMax, (v) => { maxPrice.value = v || '' })
 .filter-sort button {
   padding: 6px 18px;
   border: 1px solid #eee;
-  background: #fff;
+  background: var(--color-white, #fff);
   font-size: 14px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -111,13 +111,13 @@ watch(() => props.priceMax, (v) => { maxPrice.value = v || '' })
 }
 
 .filter-sort button:hover {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
 }
 
 .filter-sort button.active {
-  background: #e4393c;
+  background: var(--color-primary, #FF6B35);
   color: #fff;
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .filter-price {
@@ -129,17 +129,17 @@ watch(() => props.priceMax, (v) => { maxPrice.value = v || '' })
 .filter-price input {
   width: 90px;
   height: 32px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 6px;
   padding: 0 10px;
   font-size: 13px;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   outline: none;
   text-align: center;
 }
 
 .filter-price input:focus {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .filter-price input::placeholder {
@@ -153,17 +153,17 @@ watch(() => props.priceMax, (v) => { maxPrice.value = v || '' })
 
 .price-confirm {
   padding: 6px 14px;
-  border: 1px solid #e4393c;
+  border: 1px solid var(--color-primary, #FF6B35);
   border-radius: 6px;
-  background: #fff;
-  color: #e4393c;
+  background: var(--color-white, #fff);
+  color: var(--color-primary, #FF6B35);
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .price-confirm:hover {
-  background: #fff0f0;
+  background: var(--color-primary-lighter, #FFF0E8);
 }
 
 @media (max-width: 768px) {

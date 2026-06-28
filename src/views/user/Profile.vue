@@ -104,12 +104,12 @@ function changePassword() {
 .page-title {
   font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0 0 24px;
 }
 
 .profile-card {
-  background: #fff;
+  background: var(--color-white, #fff);
   border-radius: 12px;
   padding: 32px;
   display: flex;
@@ -123,7 +123,7 @@ function changePassword() {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #e4393c, #ff6b6b);
+  background: linear-gradient(135deg, var(--color-primary, #FF6B35), #ff6b6b);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,7 +133,7 @@ function changePassword() {
 .avatar-text {
   font-size: 32px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-white, #fff);
 }
 
 .profile-info {
@@ -144,7 +144,7 @@ function changePassword() {
   display: flex;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--gray-100, #f7f8fa);
   gap: 12px;
 }
 
@@ -155,20 +155,20 @@ function changePassword() {
 .info-row label {
   width: 80px;
   font-size: 14px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   flex-shrink: 0;
 }
 
 .info-row span {
   font-size: 15px;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   flex: 1;
 }
 
 .info-row input {
   flex: 1;
   height: 36px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 6px;
   padding: 0 12px;
   font-size: 14px;
@@ -176,47 +176,47 @@ function changePassword() {
 }
 
 .info-row input:focus {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .btn-edit {
   padding: 4px 14px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 14px;
-  background: #fff;
-  color: #666;
+  background: var(--color-white, #fff);
+  color: var(--gray-600, #6B7280);
   font-size: 13px;
   cursor: pointer;
 }
 
 .btn-edit:hover {
-  border-color: #e4393c;
-  color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
+  color: var(--color-primary, #FF6B35);
 }
 
 .btn-save {
   padding: 4px 14px;
   border: none;
   border-radius: 14px;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 13px;
   cursor: pointer;
 }
 
 .btn-cancel {
   padding: 4px 14px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 14px;
-  background: #fff;
-  color: #999;
+  background: var(--color-white, #fff);
+  color: var(--gray-400, #b0b5bd);
   font-size: 13px;
   cursor: pointer;
 }
 
 /* 修改密码 */
 .password-section {
-  background: #fff;
+  background: var(--color-white, #fff);
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -225,7 +225,7 @@ function changePassword() {
 .password-section h4 {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0 0 20px;
 }
 
@@ -236,14 +236,14 @@ function changePassword() {
 .form-group label {
   display: block;
   font-size: 14px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
   margin-bottom: 6px;
 }
 
 .form-group input {
   width: 100%;
   height: 40px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 8px;
   padding: 0 12px;
   font-size: 14px;
@@ -252,7 +252,7 @@ function changePassword() {
 }
 
 .form-group input:focus {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .pwd-msg {
@@ -265,15 +265,15 @@ function changePassword() {
   padding: 10px 32px;
   border: none;
   border-radius: 20px;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
 }
 
 .btn-change-pwd:hover {
-  background: #c1272d;
+  background: var(--color-primary-dark, #E55A2B);
 }
 
 @media (max-width: 768px) {

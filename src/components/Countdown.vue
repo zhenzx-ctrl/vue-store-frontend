@@ -86,8 +86,8 @@ onBeforeUnmount(() => {
   font-style: normal;
   font-size: 20px;
   font-weight: 700;
-  color: #e4393c;
-  background: #fff0f0;
+  color: var(--color-primary, #FF6B35);
+  background: var(--color-primary-lighter, #FFF0E8);
   padding: 2px 6px;
   border-radius: 4px;
   min-width: 28px;
@@ -97,14 +97,14 @@ onBeforeUnmount(() => {
 
 .countdown-block small {
   font-size: 12px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   font-weight: 400;
 }
 
 .countdown-sep {
   font-size: 18px;
   font-weight: 700;
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
   margin: 0 2px;
 }
 </style>

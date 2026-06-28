@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
 }
 
 .search-input-wrap:focus-within {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .search-icon {
@@ -123,40 +123,41 @@ onBeforeUnmount(() => {
   height: 44px;
   font-size: 15px;
   background: transparent;
-  color: #333;
+  color: var(--gray-800, #374151);
 }
 
 .search-input-wrap input::placeholder {
-  color: #bbb;
+  color: var(--gray-400, #b0b5bd);
 }
 
 .search-clear {
   background: none;
   border: none;
-  color: #999;
+  color: var(--gray-500, #8B909A);
   font-size: 14px;
   padding: 4px 8px;
   cursor: pointer;
 }
 
 .search-clear:hover {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
 }
 
 .search-btn {
   padding: 8px 24px;
   border: none;
   border-radius: 20px;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background var(--transition-fast, 0.15s);
+  font-family: inherit;
 }
 
 .search-btn:hover {
-  background: #c1272d;
+  background: var(--color-primary-dark, #E55A2B);
 }
 
 /* 联想下拉 */
@@ -198,7 +199,7 @@ onBeforeUnmount(() => {
 .suggestion-price {
   font-size: 14px;
   font-weight: 600;
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
   margin-left: 12px;
   white-space: nowrap;
 }

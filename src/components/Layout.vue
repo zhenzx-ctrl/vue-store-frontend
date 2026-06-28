@@ -6,7 +6,10 @@
         <!-- 汉堡菜单（移动端） -->
         <button class="hamburger-btn hide-desktop" @click="showHamburger = true">☰</button>
 
-        <router-link to="/" class="logo">🛒 优选商城</router-link>
+        <router-link to="/" class="logo">
+          <span class="logo-icon">◆</span>
+          优选商城
+        </router-link>
         <nav class="nav hide-mobile">
           <router-link to="/" :class="{ active: $route.path === '/' }">首页</router-link>
           <router-link to="/products" :class="{ active: $route.path === '/products' }">全部商品</router-link>
@@ -21,25 +24,27 @@
               placeholder="搜索商品..."
               @keyup.enter="doSearch"
             />
-            <button class="search-btn" @click="doSearch">🔍</button>
+            <button class="search-btn" @click="doSearch">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
           </div>
 
           <router-link to="/cart" class="cart-btn">
-            <span class="hide-mobile">购物车</span>
-            <span v-if="cartStore.totalCount > 0" class="cart-badge">{{ cartStore.totalCount }}</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span v-if="cartStore.totalCount > 0" class="cart-badge">{{ cartStore.totalCount > 99 ? '99+' : cartStore.totalCount }}</span>
           </router-link>
 
           <!-- 已登录（桌面端） -->
           <div v-if="userStore.isLoggedIn" class="user-area hide-mobile">
             <div class="user-info" @click="showDropdown = !showDropdown">
-              <span class="user-avatar">{{ userStore.username.charAt(0).toUpperCase() }}</span>
+              <span class="user-avatar">{{ (userStore.username || 'U').charAt(0).toUpperCase() }}</span>
               <span class="user-name">{{ userStore.username }}</span>
-              <span class="dropdown-arrow" :class="{ open: showDropdown }">▾</span>
+              <svg class="dropdown-arrow" :class="{ open: showDropdown }" width="10" height="6" viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6H0z"/></svg>
             </div>
             <Transition name="dropdown">
               <div v-if="showDropdown" class="user-dropdown">
-                <router-link to="/user" class="dropdown-item" @click="showDropdown = false"> 个人中心</router-link>
-                <router-link to="/orders" class="dropdown-item" @click="showDropdown = false"> 我的订单</router-link>
+                <router-link to="/user" class="dropdown-item" @click="showDropdown = false">👤 个人中心</router-link>
+                <router-link to="/orders" class="dropdown-item" @click="showDropdown = false">📦 我的订单</router-link>
                 <div class="dropdown-divider"></div>
                 <button class="dropdown-item logout" @click="handleLogout">退出登录</button>
               </div>
@@ -63,6 +68,10 @@
     <!-- 底部 -->
     <footer class="footer hide-mobile">
       <div class="footer-inner">
+        <div class="footer-brand">
+          <h3><span class="logo-icon">◆</span> 优选商城</h3>
+          <p>品质生活，优选好物</p>
+        </div>
         <div class="footer-links">
           <div class="footer-col">
             <h4>购物指南</h4>
@@ -90,7 +99,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2024 优选商城 - 品质生活，优选好物</p>
+          <p>© 2025 优选商城 - 品质生活，优选好物</p>
         </div>
       </div>
     </footer>
@@ -148,9 +157,10 @@ function handleLogout() {
   flex-direction: column;
 }
 
+/* ===== 顶部导航 ===== */
 .header {
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: var(--color-white, #fff);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -170,7 +180,7 @@ function handleLogout() {
   border: none;
   background: none;
   font-size: 22px;
-  color: #333;
+  color: var(--gray-800, #374151);
   padding: 4px 8px;
   cursor: pointer;
 }
@@ -178,9 +188,17 @@ function handleLogout() {
 .logo {
   font-size: 20px;
   font-weight: 700;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   text-decoration: none;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo-icon {
+  color: var(--color-primary, #FF6B35);
+  font-size: 22px;
 }
 
 .nav {
@@ -190,16 +208,21 @@ function handleLogout() {
 
 .nav a {
   text-decoration: none;
-  color: #666;
+  color: var(--gray-600, #6B7280);
   font-size: 15px;
   padding: 4px 0;
-  transition: color 0.2s;
+  transition: color var(--transition-fast, 0.15s);
   position: relative;
+  font-weight: var(--weight-medium, 500);
 }
 
-.nav a:hover,
+.nav a:hover {
+  color: var(--color-primary, #FF6B35);
+}
+
 .nav a.active {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
+  font-weight: var(--weight-semibold, 600);
 }
 
 .nav a.active::after {
@@ -208,25 +231,30 @@ function handleLogout() {
   bottom: -2px;
   left: 0;
   right: 0;
-  height: 2px;
-  background: #e4393c;
-  border-radius: 1px;
+  height: 2.5px;
+  background: var(--color-primary, #FF6B35);
+  border-radius: 2px;
 }
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 /* 搜索框 */
 .header-search {
   display: flex;
   align-items: center;
-  border: 2px solid #e4393c;
+  border: 2px solid var(--color-primary, #FF6B35);
   border-radius: 20px;
   overflow: hidden;
   height: 36px;
+  transition: box-shadow var(--transition-fast, 0.15s);
+}
+
+.header-search:focus-within {
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
 }
 
 .header-search input {
@@ -234,59 +262,66 @@ function handleLogout() {
   outline: none;
   padding: 0 14px;
   font-size: 13px;
-  width: 180px;
+  width: 170px;
   height: 100%;
+  background: transparent;
 }
 
 .header-search input::placeholder {
-  color: #ccc;
+  color: var(--gray-400, #b0b5bd);
 }
 
 .search-btn {
   border: none;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   width: 44px;
   height: 100%;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background var(--transition-fast, 0.15s);
 }
 
 .search-btn:hover {
-  background: #c1272d;
+  background: var(--color-primary-dark, #E55A2B);
 }
 
+/* 购物车按钮 */
 .cart-btn {
   text-decoration: none;
-  color: #333;
+  color: var(--gray-600, #6B7280);
   font-size: 15px;
   position: relative;
-  padding: 6px 16px;
-  border: 1px solid #ddd;
+  padding: 8px 12px;
   border-radius: 20px;
-  transition: all 0.2s;
+  transition: all var(--transition-fast, 0.15s);
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .cart-btn:hover {
-  border-color: #e4393c;
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
+  background: var(--color-primary-lighter, #FFF0E8);
 }
 
 .cart-badge {
   position: absolute;
-  top: -6px;
-  right: -6px;
-  background: #e4393c;
-  color: #fff;
-  font-size: 12px;
+  top: 0;
+  right: 2px;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
+  font-size: 11px;
   min-width: 18px;
   height: 18px;
   line-height: 18px;
   text-align: center;
   border-radius: 9px;
   padding: 0 4px;
+  font-weight: var(--weight-bold, 700);
 }
 
 /* 用户区域 */
@@ -299,31 +334,32 @@ function handleLogout() {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 20px;
-  transition: background 0.2s;
+  transition: background var(--transition-fast, 0.15s);
 }
 
 .user-info:hover {
-  background: #f5f5f5;
+  background: var(--gray-100, #f7f8fa);
 }
 
 .user-avatar {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 13px;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .user-name {
   font-size: 14px;
-  color: #333;
+  color: var(--gray-800, #374151);
   max-width: 80px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -331,9 +367,8 @@ function handleLogout() {
 }
 
 .dropdown-arrow {
-  font-size: 12px;
-  color: #999;
-  transition: transform 0.2s;
+  color: var(--gray-400, #b0b5bd);
+  transition: transform var(--transition-fast, 0.15s);
 }
 
 .dropdown-arrow.open {
@@ -345,39 +380,40 @@ function handleLogout() {
   top: 100%;
   right: 0;
   margin-top: 8px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  min-width: 140px;
+  background: var(--color-white, #fff);
+  border-radius: var(--radius-sm, 6px);
+  box-shadow: var(--shadow-lg, 0 10px 40px rgba(0, 0, 0, 0.08));
+  min-width: 150px;
   overflow: hidden;
   z-index: 200;
+  border: 1px solid var(--gray-200, #edeef2);
 }
 
 .dropdown-item {
   display: block;
   padding: 10px 16px;
   font-size: 14px;
-  color: #333;
+  color: var(--gray-700, #4B5563);
   text-decoration: none;
   cursor: pointer;
   border: none;
   background: none;
   width: 100%;
   text-align: left;
-  transition: background 0.2s;
+  transition: background var(--transition-fast, 0.15s);
 }
 
 .dropdown-item:hover {
-  background: #f5f5f5;
+  background: var(--gray-100, #f7f8fa);
 }
 
 .dropdown-item.logout {
-  color: #e4393c;
+  color: var(--color-danger, #EF4444);
 }
 
 .dropdown-divider {
   height: 1px;
-  background: #f0f0f0;
+  background: var(--gray-200, #edeef2);
   margin: 4px 0;
 }
 
@@ -401,24 +437,27 @@ function handleLogout() {
 
 .auth-link {
   font-size: 14px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
   text-decoration: none;
-  padding: 4px 12px;
+  padding: 6px 14px;
   border-radius: 16px;
-  transition: all 0.2s;
+  transition: all var(--transition-fast, 0.15s);
+  font-weight: var(--weight-medium, 500);
 }
 
 .auth-link:hover {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
 }
 
 .auth-link.register {
-  border: 1px solid #e4393c;
-  color: #e4393c;
+  border: 1.5px solid var(--color-primary, #FF6B35);
+  color: var(--color-primary, #FF6B35);
+  background: var(--color-primary-lighter, #FFF0E8);
 }
 
 .auth-link.register:hover {
-  background: #fff0f0;
+  background: var(--color-primary-lighter, #FFF0E8);
+  opacity: 0.9;
 }
 
 .overlay-mask {
@@ -438,29 +477,52 @@ function handleLogout() {
   padding: 20px;
 }
 
-/* 底部 */
+/* ===== 底部 ===== */
 .footer {
-  background: #333;
-  color: #aaa;
-  margin-top: 40px;
+  background: var(--gray-900, #1F2937);
+  color: var(--gray-400, #b0b5bd);
+  margin-top: 60px;
 }
 
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px 20px;
+  padding: 48px 20px 24px;
+}
+
+.footer-brand {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.footer-brand h3 {
+  font-size: 22px;
+  color: var(--color-white, #fff);
+  margin: 0 0 6px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: var(--gray-500, #8B909A);
+  margin: 0;
 }
 
 .footer-links {
   display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  margin-bottom: 30px;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
 }
 
 .footer-col h4 {
-  font-size: 15px;
-  color: #fff;
+  font-size: 14px;
+  color: var(--color-white, #fff);
   margin: 0 0 12px;
   font-weight: 600;
 }
@@ -468,47 +530,46 @@ function handleLogout() {
 .footer-col a {
   display: block;
   font-size: 13px;
-  color: #aaa;
+  color: var(--gray-400, #b0b5bd);
   text-decoration: none;
   margin-bottom: 8px;
-  transition: color 0.2s;
+  transition: color var(--transition-fast, 0.15s);
 }
 
 .footer-col a:hover {
-  color: #fff;
+  color: var(--color-primary, #FF6B35);
 }
 
 .footer-bottom {
-  border-top: 1px solid #444;
+  border-top: 1px solid var(--gray-800, #374151);
   padding-top: 20px;
   text-align: center;
   font-size: 13px;
+  color: var(--gray-500, #8B909A);
 }
 
 .footer-bottom p {
   margin: 0;
 }
 
-/* 响应式 */
+/* ===== 响应式 ===== */
 @media (max-width: 768px) {
   .header-inner {
     padding: 0 12px;
     gap: 8px;
   }
   .cart-btn {
-    padding: 6px 10px;
-    font-size: 14px;
+    padding: 8px;
   }
   .main {
     padding: 12px;
   }
   .footer-links {
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
   }
   .footer-col {
-    width: 45%;
-    margin-bottom: 10px;
+    width: 40%;
+    margin-bottom: 16px;
   }
 }
 </style>

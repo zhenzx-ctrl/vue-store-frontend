@@ -56,18 +56,18 @@ function changePage(p) {
 
 .pagination button {
   padding: 6px 16px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 6px;
-  background: #fff;
-  color: #666;
+  background: var(--color-white, #fff);
+  color: var(--gray-600, #6B7280);
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .pagination button:hover:not(:disabled) {
-  border-color: #e4393c;
-  color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
+  color: var(--color-primary, #FF6B35);
 }
 
 .pagination button:disabled {
@@ -83,19 +83,19 @@ function changePage(p) {
   height: 36px;
   border-radius: 6px;
   font-size: 14px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .pagination span:hover:not(.ellipsis) {
-  background: #fff0f0;
-  color: #e4393c;
+  background: var(--color-primary-lighter, #FFF0E8);
+  color: var(--color-primary, #FF6B35);
 }
 
 .pagination span.active {
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
 }
 
 .pagination span.ellipsis {

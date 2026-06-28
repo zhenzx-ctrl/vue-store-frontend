@@ -75,7 +75,7 @@ function handleLogout() {
   left: 0;
   width: 260px;
   height: 100%;
-  background: #fff;
+  background: var(--color-white, #fff);
   z-index: 400;
   display: flex;
   flex-direction: column;
@@ -83,9 +83,9 @@ function handleLogout() {
 }
 
 .menu-header {
-  background: linear-gradient(135deg, #e4393c, #ff6b6b);
+  background: linear-gradient(135deg, var(--color-primary, #FF6B35), #ff6b6b);
   padding: 32px 20px 20px;
-  color: #fff;
+  color: var(--color-white, #fff);
   position: relative;
 }
 
@@ -118,7 +118,7 @@ function handleLogout() {
 }
 
 .menu-auth a {
-  color: #fff;
+  color: var(--color-white, #fff);
   text-decoration: none;
   padding: 6px 16px;
   border-radius: 16px;
@@ -139,7 +139,7 @@ function handleLogout() {
   right: 12px;
   border: none;
   background: none;
-  color: #fff;
+  color: var(--color-white, #fff);
   font-size: 20px;
   cursor: pointer;
   width: 32px;
@@ -164,35 +164,35 @@ function handleLogout() {
   display: block;
   padding: 14px 24px;
   font-size: 15px;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .menu-nav a:hover {
-  background: #f5f5f5;
-  color: #e4393c;
+  background: var(--gray-100, #f7f8fa);
+  color: var(--color-primary, #FF6B35);
 }
 
 .menu-footer {
   padding: 16px 24px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--gray-200, #edeef2);
 }
 
 .menu-footer button {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 20px;
-  background: #fff;
-  color: #999;
+  background: var(--color-white, #fff);
+  color: var(--gray-400, #b0b5bd);
   font-size: 14px;
   cursor: pointer;
 }
 
 .menu-footer button:hover {
-  border-color: #e4393c;
-  color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
+  color: var(--color-primary, #FF6B35);
 }
 
 /* 动画 */

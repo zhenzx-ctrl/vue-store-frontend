@@ -25,7 +25,7 @@
         :key="cat.id"
         :class="{ active: currentCategory === cat.name }"
         @click="currentCategory = cat.name; page = 1; loadData()"
-      >{{ cat.icon }} {{ cat.name }}</button>
+      >{{ cat.name }}</button>
     </div>
 
     <!-- 高级筛选栏 -->
@@ -48,6 +48,10 @@
     </div>
   </div>
 </template>
+
+<script>
+export default { name: 'ProductList' }
+</script>
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
@@ -177,7 +181,7 @@ onMounted(() => {
 }
 
 .search-input-wrap:focus-within {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .search-icon {
@@ -192,23 +196,23 @@ onMounted(() => {
   height: 44px;
   font-size: 15px;
   background: transparent;
-  color: #333;
+  color: var(--gray-800, #374151);
 }
 
 .search-input-wrap input::placeholder {
-  color: #bbb;
+  color: var(--gray-400, #b0b5bd);
 }
 
 .search-clear {
   background: none;
   border: none;
-  color: #999;
+  color: var(--gray-500, #8B909A);
   font-size: 14px;
   padding: 4px 8px;
 }
 
 .search-clear:hover {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
 }
 
 /* 分类筛选 */
@@ -221,23 +225,25 @@ onMounted(() => {
 
 .category-bar button {
   padding: 8px 20px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 20px;
-  background: #fff;
+  background: var(--color-white, #fff);
   font-size: 14px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
   transition: all 0.2s;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .category-bar button:hover {
-  border-color: #e4393c;
-  color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
+  color: var(--color-primary, #FF6B35);
 }
 
 .category-bar button.active {
-  background: #e4393c;
-  color: #fff;
-  border-color: #e4393c;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
+  border-color: var(--color-primary, #FF6B35);
 }
 
 /* 商品网格 */
@@ -253,26 +259,50 @@ onMounted(() => {
   text-align: center;
   padding: 16px;
   margin-top: 20px;
-  background: #fff;
-  border-radius: 8px;
-  color: #e4393c;
+  background: var(--color-white, #fff);
+  border-radius: var(--radius-sm, 6px);
+  color: var(--color-primary, #FF6B35);
   font-size: 14px;
   cursor: pointer;
-  border: 1px solid #e4393c;
+  border: 1px solid var(--color-primary, #FF6B35);
   transition: background 0.2s;
+  font-family: inherit;
 }
 
 .load-more-mobile:hover {
-  background: #fff0f0;
+  background: var(--color-primary-lighter, #FFF0E8);
 }
 
 /* 响应式 */
 @media (max-width: 768px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
   .load-more-mobile {
     display: block;
+  }
+  .search-input-wrap input {
+    height: 40px;
+    font-size: 14px;
+  }
+  .category-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .category-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .category-bar button {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 6px 14px;
+    font-size: 13px;
   }
 }
 </style>

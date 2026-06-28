@@ -88,22 +88,22 @@ function saveAddress() {
 .page-title {
   font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0;
 }
 
 .btn-add {
   padding: 8px 20px;
-  border: 1px solid #e4393c;
+  border: 1px solid var(--color-primary, #FF6B35);
   border-radius: 20px;
-  background: #fff;
-  color: #e4393c;
+  background: var(--color-white, #fff);
+  color: var(--color-primary, #FF6B35);
   font-size: 14px;
   cursor: pointer;
 }
 
 .btn-add:hover {
-  background: #fff0f0;
+  background: var(--color-primary-lighter, #FFF0E8);
 }
 
 .address-list {
@@ -113,15 +113,15 @@ function saveAddress() {
 }
 
 .address-card {
-  background: #fff;
+  background: var(--color-white, #fff);
   border-radius: 8px;
   padding: 16px 20px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--gray-200, #edeef2);
   transition: border-color 0.2s;
 }
 
 .address-card.default {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .addr-top {
@@ -134,25 +134,25 @@ function saveAddress() {
 .addr-name {
   font-size: 15px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
 }
 
 .addr-phone {
   font-size: 14px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
 }
 
 .default-tag {
   font-size: 12px;
-  color: #e4393c;
-  background: #fff0f0;
+  color: var(--color-primary, #FF6B35);
+  background: var(--color-primary-lighter, #FFF0E8);
   padding: 2px 8px;
   border-radius: 4px;
 }
 
 .addr-detail {
   font-size: 14px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
   margin: 0;
   line-height: 1.5;
 }
@@ -162,7 +162,7 @@ function saveAddress() {
   gap: 12px;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid #f5f5f5;
+  border-top: 1px solid var(--gray-100, #f7f8fa);
 }
 
 .addr-actions button {
@@ -170,12 +170,12 @@ function saveAddress() {
   border: none;
   background: none;
   font-size: 13px;
-  color: #666;
+  color: var(--gray-600, #6B7280);
   cursor: pointer;
 }
 
 .addr-actions button:hover {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
 }
 
 .addr-actions button.danger:hover {
@@ -184,10 +184,10 @@ function saveAddress() {
 
 .btn-cancel {
   padding: 8px 24px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 20px;
-  background: #fff;
-  color: #666;
+  background: var(--color-white, #fff);
+  color: var(--gray-600, #6B7280);
   font-size: 14px;
   cursor: pointer;
 }
@@ -196,13 +196,36 @@ function saveAddress() {
   padding: 8px 24px;
   border: none;
   border-radius: 20px;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 14px;
   cursor: pointer;
 }
 
 .btn-confirm:hover {
-  background: #c1272d;
+  background: var(--color-primary-dark, #E55A2B);
+}
+
+@media (max-width: 768px) {
+  .address-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .address-card {
+    padding: 14px 16px;
+  }
+  .addr-top {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .addr-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .addr-actions button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
 }
 </style>

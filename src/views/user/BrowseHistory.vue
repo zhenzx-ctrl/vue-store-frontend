@@ -40,23 +40,23 @@ function clearHistory() {
 .page-title {
   font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0;
 }
 
 .btn-clear {
   padding: 6px 16px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 16px;
-  background: #fff;
-  color: #999;
+  background: var(--color-white, #fff);
+  color: var(--gray-400, #b0b5bd);
   font-size: 13px;
   cursor: pointer;
 }
 
 .btn-clear:hover {
-  border-color: #e4393c;
-  color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
+  color: var(--color-primary, #FF6B35);
 }
 
 .history-list {

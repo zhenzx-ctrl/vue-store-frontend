@@ -39,7 +39,7 @@ onMounted(() => {
 .page-title {
   font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0 0 24px;
 }
 
@@ -52,24 +52,24 @@ onMounted(() => {
 .coupon-card {
   display: flex;
   align-items: stretch;
-  background: #fff;
+  background: var(--color-white, #fff);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   position: relative;
-  border: 1px dashed #e4393c;
+  border: 1px dashed var(--color-primary, #FF6B35);
   transition: opacity 0.2s;
 }
 
 .coupon-card.used {
-  border-color: #ddd;
+  border-color: var(--gray-300, #d0d5dd);
   opacity: 0.5;
 }
 
 .coupon-left {
   width: 100px;
-  background: linear-gradient(135deg, #e4393c, #ff6b6b);
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-primary, #FF6B35), #ff6b6b);
+  color: var(--color-white, #fff);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,13 +100,13 @@ onMounted(() => {
 .coupon-right h4 {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0 0 4px;
 }
 
 .coupon-right p {
   font-size: 13px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   margin: 0 0 6px;
 }
 
@@ -120,9 +120,31 @@ onMounted(() => {
   top: 12px;
   right: 16px;
   font-size: 12px;
-  color: #999;
-  background: #f5f5f5;
+  color: var(--gray-400, #b0b5bd);
+  background: var(--gray-100, #f7f8fa);
   padding: 2px 10px;
   border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .coupon-card {
+    border-radius: 8px;
+  }
+  .coupon-left {
+    width: 72px;
+    padding: 12px 8px;
+  }
+  .coupon-value {
+    font-size: 28px;
+  }
+  .coupon-symbol {
+    font-size: 13px;
+  }
+  .coupon-right {
+    padding: 12px 14px;
+  }
+  .coupon-right h4 {
+    font-size: 14px;
+  }
 }
 </style>

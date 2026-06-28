@@ -51,10 +51,10 @@ function onFinished() {
 
 <style scoped>
 .flash-sale {
-  background: #fff;
-  border-radius: 12px;
+  background: var(--color-white, #fff);
+  border-radius: var(--radius-md, 10px);
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-card, 0 2px 12px rgba(0,0,0,0.04));
 }
 
 .flash-header {
@@ -67,7 +67,7 @@ function onFinished() {
 .flash-title {
   font-size: 20px;
   font-weight: 600;
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
   margin: 0;
 }
 
@@ -79,8 +79,8 @@ function onFinished() {
 
 .flash-item {
   text-decoration: none;
-  color: #333;
-  border-radius: 8px;
+  color: var(--color-text, #1F2937);
+  border-radius: var(--radius-sm, 6px);
   overflow: hidden;
   transition: transform 0.3s;
 }
@@ -92,9 +92,9 @@ function onFinished() {
 .flash-img {
   width: 100%;
   height: 140px;
-  background: #f5f5f5;
+  background: var(--gray-100, #f7f8fa);
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: var(--radius-sm, 6px);
 }
 
 .flash-info {
@@ -120,18 +120,18 @@ function onFinished() {
 .flash-sale-price {
   font-size: 20px;
   font-weight: 700;
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
 }
 
 .flash-original-price {
   font-size: 13px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   text-decoration: line-through;
 }
 
 .flash-progress {
   height: 6px;
-  background: #f5f5f5;
+  background: var(--gray-200, #edeef2);
   border-radius: 3px;
   overflow: hidden;
   margin-bottom: 4px;
@@ -139,14 +139,14 @@ function onFinished() {
 
 .flash-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #e4393c, #ff6b6b);
+  background: linear-gradient(90deg, #FF6B35, #FF8A5C);
   border-radius: 3px;
   transition: width 0.3s;
 }
 
 .flash-tag {
   font-size: 12px;
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
 }
 
 @media (max-width: 768px) {

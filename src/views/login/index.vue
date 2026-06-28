@@ -96,7 +96,7 @@ async function handleLogin() {
 .login-card {
   width: 400px;
   max-width: 100%;
-  background: #fff;
+  background: var(--color-white, #fff);
   border-radius: 16px;
   padding: 40px 36px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
@@ -105,14 +105,14 @@ async function handleLogin() {
 .login-title {
   font-size: 24px;
   font-weight: 700;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0 0 6px;
   text-align: center;
 }
 
 .login-subtitle {
   font-size: 14px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   margin: 0 0 32px;
   text-align: center;
 }
@@ -126,7 +126,7 @@ async function handleLogin() {
 .form-group label {
   display: block;
   font-size: 14px;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin-bottom: 8px;
   font-weight: 500;
 }
@@ -134,18 +134,18 @@ async function handleLogin() {
 .form-group input {
   width: 100%;
   height: 44px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 8px;
   padding: 0 14px;
   font-size: 15px;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   outline: none;
   transition: border-color 0.2s;
   box-sizing: border-box;
 }
 
 .form-group input:focus {
-  border-color: #e4393c;
+  border-color: var(--color-primary, #FF6B35);
 }
 
 .form-group input::placeholder {
@@ -154,7 +154,7 @@ async function handleLogin() {
 
 .error-msg {
   font-size: 13px;
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
   margin: -8px 0 0;
 }
 
@@ -162,8 +162,8 @@ async function handleLogin() {
   height: 48px;
   border: none;
   border-radius: 24px;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -172,7 +172,7 @@ async function handleLogin() {
 }
 
 .btn-login:hover:not(:disabled) {
-  background: #c1272d;
+  background: var(--color-primary-dark, #E55A2B);
 }
 
 .btn-login:disabled {
@@ -184,16 +184,44 @@ async function handleLogin() {
   text-align: center;
   margin-top: 24px;
   font-size: 14px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
 }
 
 .link-register {
-  color: #e4393c;
+  color: var(--color-primary, #FF6B35);
   text-decoration: none;
   font-weight: 500;
 }
 
 .link-register:hover {
   text-decoration: underline;
+}
+
+/* ===== 移动端适配 ===== */
+@media (max-width: 480px) {
+  .login-page {
+    padding: 0;
+    align-items: flex-start;
+    background: var(--color-white, #fff);
+  }
+  .login-card {
+    padding: 40px 24px 32px;
+    border-radius: 0;
+    box-shadow: none;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .login-title {
+    font-size: 22px;
+  }
+  .login-subtitle {
+    margin-bottom: 24px;
+  }
+  .btn-login {
+    height: 46px;
+    font-size: 15px;
+  }
 }
 </style>

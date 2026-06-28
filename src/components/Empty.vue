@@ -24,7 +24,7 @@ defineEmits(['action'])
 .empty-state {
   text-align: center;
   padding: 60px 20px;
-  background: #fff;
+  background: var(--color-white, #fff);
   border-radius: 12px;
 }
 
@@ -36,16 +36,16 @@ defineEmits(['action'])
 
 .empty-text {
   font-size: 16px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   margin: 0 0 20px;
 }
 
 .empty-action {
   padding: 10px 32px;
-  border: 2px solid #e4393c;
+  border: 2px solid var(--color-primary, #FF6B35);
   border-radius: 24px;
-  background: #fff;
-  color: #e4393c;
+  background: var(--color-white, #fff);
+  color: var(--color-primary, #FF6B35);
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
@@ -53,6 +53,6 @@ defineEmits(['action'])
 }
 
 .empty-action:hover {
-  background: #fff0f0;
+  background: var(--color-primary-lighter, #FFF0E8);
 }
 </style>

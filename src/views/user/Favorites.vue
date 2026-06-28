@@ -28,7 +28,7 @@ onMounted(() => {
 .page-title {
   font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0 0 24px;
 }
 
@@ -50,7 +50,7 @@ onMounted(() => {
   border: none;
   border-radius: 14px;
   background: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  color: var(--color-white, #fff);
   font-size: 12px;
   cursor: pointer;
   opacity: 0;
@@ -63,7 +63,7 @@ onMounted(() => {
 }
 
 .btn-unfav:hover {
-  background: #e4393c;
+  background: var(--color-primary, #FF6B35);
 }
 
 @media (max-width: 768px) {

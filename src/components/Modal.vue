@@ -53,7 +53,7 @@ function handleClose() {
 }
 
 .modal-box {
-  background: #fff;
+  background: var(--color-white, #fff);
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   max-width: 90vw;
@@ -71,7 +71,7 @@ function handleClose() {
 .modal-title {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: var(--gray-900, #1F2937);
   margin: 0;
 }
 
@@ -81,7 +81,7 @@ function handleClose() {
   border: none;
   background: none;
   font-size: 22px;
-  color: #999;
+  color: var(--gray-400, #b0b5bd);
   cursor: pointer;
   border-radius: 50%;
   display: flex;
@@ -91,8 +91,8 @@ function handleClose() {
 }
 
 .modal-close:hover {
-  background: #f5f5f5;
-  color: #333;
+  background: var(--gray-100, #f7f8fa);
+  color: var(--gray-900, #1F2937);
 }
 
 .modal-body {
@@ -108,26 +108,26 @@ function handleClose() {
 
 .btn-cancel {
   padding: 8px 24px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--gray-300, #d0d5dd);
   border-radius: 20px;
-  background: #fff;
-  color: #666;
+  background: var(--color-white, #fff);
+  color: var(--gray-600, #6B7280);
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .btn-cancel:hover {
-  border-color: #999;
-  color: #333;
+  border-color: var(--gray-400, #b0b5bd);
+  color: var(--gray-900, #1F2937);
 }
 
 .btn-confirm {
   padding: 8px 24px;
   border: none;
   border-radius: 20px;
-  background: #e4393c;
-  color: #fff;
+  background: var(--color-primary, #FF6B35);
+  color: var(--color-white, #fff);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -135,7 +135,7 @@ function handleClose() {
 }
 
 .btn-confirm:hover {
-  background: #c1272d;
+  background: var(--color-primary-dark, #E55A2B);
 }
 
 /* 动画 */
