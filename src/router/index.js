@@ -104,21 +104,26 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-    // 1) 浏览器原生返回/前进 → 使用原生保存的位置
-    if (savedPosition) {
-      return savedPosition
-    }
-    // 2) 手动导航返回（如从详情页点回首页）→ 从缓存恢复
+    // 1) 手动导航返回（如从详情页点回首页）→ 从缓存恢复
     const cacheKey = to.name
     if (cacheKey && scrollCache.has(cacheKey)) {
       const pos = scrollCache.get(cacheKey)
       scrollCache.delete(cacheKey)
       return pos
     }
+    // 2) 浏览器原生返回/前进 → 使用原生保存的位置
+    if (savedPosition) {
+      return savedPosition
+    }
     // 3) 新页面 → 滚动到顶部
     return { top: 0 }
   },
 })
+
+// 禁止浏览器原生滚动恢复，使用自定义缓存
+if (history.scrollRestoration) {
+  history.scrollRestoration = 'manual'
+}
 
 // 路由守卫：保存滚动位置 + 标题 + 鉴权
 router.beforeEach((to, from) => {

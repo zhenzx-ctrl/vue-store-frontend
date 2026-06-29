@@ -78,6 +78,11 @@ function saveAddress() {
 </script>
 
 <style scoped>
+.address-page {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .address-header {
   display: flex;
   align-items: center;

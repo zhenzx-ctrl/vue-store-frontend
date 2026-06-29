@@ -5,14 +5,12 @@
     </div>
     <div class="product-info">
       <h4 class="product-name">{{ product.name }}</h4>
+      <span class="product-category">{{ product.category }}</span>
       <p class="product-desc">{{ product.description }}</p>
       <div class="product-meta">
         <span v-if="product.sales" class="product-sales">已售 {{ product.sales > 999 ? (product.sales/1000).toFixed(1) + 'k' : product.sales }}</span>
       </div>
-      <div class="product-bottom">
-        <span class="product-price">¥{{ product.price.toFixed(2) }}</span>
-        <span class="product-category">{{ product.category }}</span>
-      </div>
+      <div class="product-price">¥{{ product.price.toFixed(2) }}</div>
     </div>
   </router-link>
 </template>
@@ -72,11 +70,21 @@ defineProps({
 .product-name {
   font-size: var(--text-base, 14px);
   font-weight: var(--weight-semibold, 600);
-  margin: 0 0 var(--space-1, 4px);
+  margin: 0 0 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--gray-900, #1F2937);
+}
+
+.product-category {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--gray-400, #b0b5bd);
+  background: var(--gray-100, #f7f8fa);
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
 }
 
 .product-desc {
@@ -98,26 +106,12 @@ defineProps({
   color: var(--gray-400, #b0b5bd);
 }
 
-.product-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-  padding-top: var(--space-2, 8px);
-  border-top: 1px solid var(--gray-100, #f7f8fa);
-}
-
 .product-price {
   font-size: var(--text-lg, 16px);
   font-weight: var(--weight-bold, 700);
   color: var(--color-primary, #FF6B35);
-}
-
-.product-category {
-  font-size: var(--text-xs, 12px);
-  color: var(--gray-400, #b0b5bd);
-  background: var(--gray-100, #f7f8fa);
-  padding: 2px 8px;
-  border-radius: 4px;
+  margin-top: auto;
+  padding-top: var(--space-2, 8px);
+  border-top: 1px solid var(--gray-100, #f7f8fa);
 }
 </style>

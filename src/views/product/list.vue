@@ -89,6 +89,7 @@ function loadData() {
     priceMin: priceMin.value,
     priceMax: priceMax.value,
   })
+  window.scrollTo(0, 0)
 }
 
 // 搜索防抖

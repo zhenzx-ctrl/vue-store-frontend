@@ -25,6 +25,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.favorites-page {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .page-title {
   font-size: 20px;
   font-weight: 600;

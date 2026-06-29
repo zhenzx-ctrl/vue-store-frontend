@@ -5,13 +5,73 @@
 import { getAdminData, setAdminData, getStorage, setStorage } from '@/utils/storage'
 import { generateId } from '@/utils'
 
-// 图片 URL 生成辅助 — 只用 phone / laptop / audio / watch / appliance 五个前缀
-const img = (seed) => `https://picsum.photos/seed/${seed}/400/400`
-const imgs = (seed, count = 3) =>
-  Array.from({ length: count }, (_, i) => `https://picsum.photos/seed/${seed}-${i + 1}/800/800`)
+// 图片 URL 生成 — Unsplash 真实产品照片
+// 每个品类对应已验证的实拍图
+const UNSPLASH = {
+  phone: [
+    'photo-1511707171634-5f897ff02aa9',
+    'photo-1592899670020-ee1c1b3c5e8a',
+    'photo-1601784551446-20c9e07cdbdb',
+    'photo-1589496931918-f6b9c15f1f1a',
+    'photo-1567581935884-5c8c5c0f3c1a',
+  ],
+  laptop: [
+    'photo-1496181133206-80ce9b88a853',
+    'photo-1525547712311-4e4e4a6b8b0a',
+    'photo-1517336714731-489689fd1ca8',
+    'photo-1461749280684-dccba630e2f6',
+    'photo-1531297484001-80022131f5a1',
+  ],
+  audio: [
+    'photo-1505740420928-5e560c06d30e',
+    'photo-1572569511254-d8f925fe2cbb',
+    'photo-1546435770-a3e426bf472b',
+    'photo-1583394838336-acd977736f90',
+    'photo-1487215078519-e21cc028cb29',
+  ],
+  watch: [
+    'photo-1546868871-af0de0ae72fa',
+    'photo-1524592094714-0f0654e20314',
+    'photo-1579586337278-3befd40fd17a',
+    'photo-1523170335258-f5ed11844a49',
+    'photo-1508685096489-7aacd43bd3b1',
+  ],
+  appliance: [
+    'photo-1558618666-fcd25c85f82e',
+    'photo-1585771724684-38269f763e69',
+    'photo-1559159894-0f8a16d0e3c1',
+    'photo-1590794056226-79ef3a8147e1',
+    'photo-1586201375763-0e4c9b1bf6b0',
+  ],
+  fashion: [
+    'photo-1564257631407-4deb1f99eaa0',
+    'photo-1556905055-8f358a7a47b2',
+    'photo-1560343090-f0409e92791a',
+    'photo-1549298916-b41d501d3772',
+    'photo-1608543651152-054b0e29d4bc',
+  ],
+}
+const BASE = 'https://images.unsplash.com/'
+const SIZE = '?w=400&h=400&fit=crop'
+const SIZE_LG = '?w=800&h=800&fit=crop'
+
+const img = (seed) => {
+  const [cat, idx] = seed.split('-')
+  const list = UNSPLASH[cat]
+  const i = list ? (parseInt(idx) - 1) % list.length : 0
+  return `${BASE}${list[i]}${SIZE}`
+}
+const imgs = (seed, count = 3) => {
+  const [cat, idx] = seed.split('-')
+  const list = UNSPLASH[cat]
+  const start = list ? (parseInt(idx) - 1) % list.length : 0
+  return Array.from({ length: count }, (_, i) =>
+    `${BASE}${list[(start + i) % list.length]}${SIZE_LG}`
+  )
+}
 
 // 数据版本号 — 用于检测旧 localStorage 数据并自动重置
-const STORE_DATA_VERSION = 'v2.0'
+const STORE_DATA_VERSION = 'v3.0'
 
 // 商品分类（6个，用于首页分类导航）
 export const CATEGORIES = [
@@ -131,7 +191,7 @@ export function getProducts() {
   const needsReset = storedVersion !== STORE_DATA_VERSION ||
     (adminProducts && adminProducts.length > 0 &&
       (adminProducts[0].category === '电子产品' || // 旧版分类名
-       !adminProducts[0].image?.includes('/seed/phone-')))
+       adminProducts[0].image?.includes('picsum'))) // 旧版图片域名
 
   if (adminProducts && adminProducts.length > 0 && !needsReset) {
     // 新版数据，补充可能缺失的图片

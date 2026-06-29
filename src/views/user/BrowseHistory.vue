@@ -30,6 +30,11 @@ function clearHistory() {
 </script>
 
 <style scoped>
+.history-page {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .history-header {
   display: flex;
   align-items: center;

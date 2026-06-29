@@ -68,6 +68,7 @@ const orderCount = computed(() => {
   display: flex;
   gap: 24px;
   align-items: flex-start;
+  width: 100%;
 }
 
 /* ===== 侧边栏 ===== */
@@ -203,6 +204,8 @@ const orderCount = computed(() => {
   box-shadow: var(--shadow-card, 0 2px 12px rgba(0,0,0,0.04));
   border: 1px solid var(--color-border-light, #f3f4f6);
   min-height: 400px;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* ===== 响应式 ===== */
@@ -268,7 +271,9 @@ const orderCount = computed(() => {
     border-bottom: 2px solid var(--color-primary, #FF6B35);
   }
   .user-content {
+    width: 100%;
     padding: var(--space-4, 16px);
+    box-sizing: border-box;
   }
 }
 </style>

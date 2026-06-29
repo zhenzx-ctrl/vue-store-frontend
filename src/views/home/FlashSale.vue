@@ -69,6 +69,9 @@ function onFinished() {
   font-weight: 600;
   color: var(--color-primary, #FF6B35);
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .flash-list {
@@ -150,12 +153,29 @@ function onFinished() {
 }
 
 @media (max-width: 768px) {
+  .flash-sale {
+    padding: 12px;
+  }
+  .flash-header {
+    margin-bottom: 10px;
+  }
+  .flash-title {
+    font-size: 15px;
+    color: #E55A2B;
+    gap: 4px;
+  }
   .flash-list {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 10px;
   }
   .flash-img {
     height: 100px;
+  }
+  .flash-name {
+    font-size: 13px;
+  }
+  .flash-sale-price {
+    font-size: 17px;
   }
 }
 </style>

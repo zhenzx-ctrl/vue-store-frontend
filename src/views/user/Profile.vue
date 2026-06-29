@@ -101,6 +101,11 @@ function changePassword() {
 </script>
 
 <style scoped>
+.profile-page {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .page-title {
   font-size: 20px;
   font-weight: 600;
@@ -163,6 +168,8 @@ function changePassword() {
   font-size: 15px;
   color: var(--gray-900, #1F2937);
   flex: 1;
+  word-break: break-word;
+  min-width: 0;
 }
 
 .info-row input {
@@ -281,6 +288,37 @@ function changePassword() {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 20px;
+  }
+  .profile-info {
+    width: 100%;
+  }
+  .info-row {
+    gap: 8px;
+    padding: 10px 0;
+    flex-wrap: wrap;
+  }
+  .info-row label {
+    width: 60px;
+    font-size: 13px;
+  }
+  .info-row span {
+    font-size: 14px;
+    min-width: 0;
+  }
+  .btn-edit {
+    padding: 2px 10px;
+    font-size: 12px;
+    border-radius: 12px;
+    line-height: 22px;
+    height: 24px;
+  }
+  .btn-save, .btn-cancel {
+    padding: 2px 10px;
+    font-size: 12px;
+    border-radius: 12px;
+    line-height: 22px;
+    height: 24px;
   }
 }
 </style>

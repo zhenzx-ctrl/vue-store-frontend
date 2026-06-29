@@ -88,6 +88,14 @@
         提交订单
       </button>
     </template>
+    <!-- 地址选择弹窗 -->
+    <Modal :visible="showAddressPicker" title="选择收货地址" width="480px" @close="showAddressPicker = false">
+      <AddressPicker v-model="addressForm" />
+      <template #footer>
+        <button class="btn-cancel" @click="showAddressPicker = false">取消</button>
+        <button class="btn-confirm" @click="confirmAddress">确定</button>
+      </template>
+    </Modal>
   </Modal>
 </template>
 

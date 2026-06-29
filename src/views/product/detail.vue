@@ -1,5 +1,10 @@
 <template>
   <div class="detail-page" v-if="product">
+    <!-- 返回按钮 -->
+    <button class="back-btn" @click="goBack">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      返回
+    </button>
     <div class="detail-layout">
       <!-- 左：商品图片（放大预览） -->
       <div class="detail-img">
@@ -228,6 +233,10 @@ function buyNow() {
   router.push('/cart')
 }
 
+function goBack() {
+  router.back()
+}
+
 function goLogin() {
   showLoginModal.value = false
   router.push({ path: '/login', query: { redirect: route.fullPath } })
@@ -239,6 +248,31 @@ watch(() => route.params.id, loadProduct, { immediate: true })
 <style scoped>
 .detail-page {
   position: relative;
+}
+
+/* ===== 返回按钮 ===== */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  margin-bottom: 12px;
+  border: 1.5px solid var(--gray-200, #edeef2);
+  border-radius: 20px;
+  background: var(--color-white, #fff);
+  color: var(--gray-600, #6B7280);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast, 0.15s);
+  font-family: inherit;
+}
+.back-btn:hover {
+  border-color: var(--color-primary, #FF6B35);
+  color: var(--color-primary, #FF6B35);
+}
+.back-btn svg {
+  width: 16px;
+  height: 16px;
 }
 
 /* ===== 主布局 ===== */

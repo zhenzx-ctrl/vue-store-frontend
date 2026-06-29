@@ -512,6 +512,9 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 768px) {
+  .home {
+    gap: 16px;
+  }
   .banner-area {
     flex-direction: column;
   }
@@ -542,7 +545,7 @@ onBeforeUnmount(() => {
   }
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 10px;
   }
   .promotion-banners {
     grid-template-columns: 1fr;
@@ -557,6 +560,16 @@ onBeforeUnmount(() => {
   }
   .cat-emoji {
     font-size: 22px;
+  }
+  .section-title {
+    font-size: 17px;
+    padding-left: 10px;
+  }
+  .section-header {
+    margin-bottom: 14px;
+  }
+  .category-grid-section {
+    padding: 16px 12px;
   }
 }
 </style>

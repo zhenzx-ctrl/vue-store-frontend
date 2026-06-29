@@ -62,7 +62,11 @@
 
     <!-- 主内容 -->
     <main class="main">
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <keep-alive :include="['ProductList']">
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
     </main>
 
     <!-- 底部 -->
